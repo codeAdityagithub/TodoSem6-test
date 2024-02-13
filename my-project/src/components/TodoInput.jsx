@@ -1,8 +1,17 @@
+import axios from "axios";
+
 const TodoInput = () => {
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         // prevent defualt behaviour of form ie. make a get request and refresh the page
         event.preventDefault();
-        console.log(event.target[0]);
+        // console.log(event.target[0]);
+        const input = event.target[0].value;
+        const data = {
+            todo: input,
+        };
+        const res = await axios.post("http://localhost:8000/todo", data);
+        const resdata = await res.json();
+        console.log(resdata);
     }
     return (
         <form

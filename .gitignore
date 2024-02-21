@@ -1,29 +1,2 @@
 api/node_modules
 my-project/node_modules
-my-project/.env
-api/.env
-
-# Logs
-my-project/logs
-my-project/*.log
-my-project/npm-debug.log*
-my-project/yarn-debug.log*
-my-project/yarn-error.log*
-my-project/pnpm-debug.log*
-my-project/lerna-debug.log*
-
-my-project/node_modules
-my-project/dist
-my-project/dist-ssr
-my-project/*.local
-
-# Editor directories and files
-my-project/.vscode/*
-my-project/!.vscode/extensions.json
-my-project/.idea
-my-project/.DS_Store
-my-project/*.suo
-my-project/*.ntvs*
-my-project/*.njsproj
-my-project/*.sln
-my-project/*.sw?

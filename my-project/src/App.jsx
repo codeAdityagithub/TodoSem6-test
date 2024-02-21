@@ -1,30 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoInput from "./components/TodoInput";
 import Todocard from "./components/Todocard";
+import axios from "axios";
+import Login from "./components/Login";
+import LogUp from "./components/LogUp";
+import Todos from "./components/Todos";
+import {
+    createBrowserRouter,
+    RouterProvider,
+  } from "react-router-dom";
 
+
+  
 function App() {
-    const [todos, setTodos] = useState([]);
-
+    
+    const router=createBrowserRouter([
+        {
+            element:<Todos/>,
+            path:"/",
+        },
+        {
+            element:<Login/>,
+            path:"/login",
+        },
+        {
+            element:<LogUp/>,
+            path:"/logup"
+        }
+    ])
     return (
         <div className="bg-slate-800 h-screen flex flex-col items-center justify-evenly gap-3">
-            {/* top part */}
-            <div className="w-full flex-1 flex items-center justify-center flex-col gap-10 p-3">
-                {/* header */}
-                <div className="text-4xl text-white">JUST DO IT |</div>
-
-                {/* todo input */}
-                <TodoInput />
-            </div>
-
-            {/* all todos = bottom part */}
-            <div className="flex-1 w-full flex items-center flex-col gap-2 p-3 overflow-y-scroll">
-                {todos.map((todo, ind) => {
-                    return <Todocard key={ind} title={todo.title} />;
-                })}
-                {todos.length === 0 ? (
-                    <p className="text-white">Enter todos to see them</p>
-                ) : null}
-            </div>
+           <RouterProvider router={router} />
         </div>
     );
 }

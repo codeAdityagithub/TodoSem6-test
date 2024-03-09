@@ -1,20 +1,23 @@
 import axios from "axios";
 
-const TodoInput = ({addTodo}) => {
+const TodoInput = ({ addTodo }) => {
     async function handleSubmit(event) {
         // prevent defualt behaviour of form ie. make a get request and refresh the page
         event.preventDefault();
         // console.log("sending");
         // console.log(event.target[0].value);
-        const input=event.target[0].value;
-        const data={
-            todo:input,
-        }
-        const res= await axios.post("http://localhost:8000/todo",data);
+        const input = event.target[0].value;
+        const data = {
+            todo: input,
+        };
+        const res = await axios.post("http://localhost:8000/todo", data, {
+            withCredentials: true,
+        });
         // const resdata= await res.json();
         // console.log(resdata);
-        if(res.status===200){
-            addTodo(input)
+        if (res.status === 200) {
+            addTodo(input, res.data.id);
+            event.target[0].value = "";
         }
     }
     return (
